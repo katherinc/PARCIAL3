@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.katerin.controlador.ServeleteUs</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ServeleteConsulta</servlet-name>
+  	<display-name>ServeleteConsulta</display-name>
+  	<description></description>
+  	<servlet-class>com.katerin.controlador.ServeleteConsulta</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ServeleteUs</servlet-name>
   	<url-pattern>/ServeleteUs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServeleteConsulta</servlet-name>
+  	<url-pattern>/ServeleteConsulta</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -35,8 +35,8 @@ String Ape=request.getParameter("Ape");
 <td>
 
 <label>ID</label><input class="controls" type="text" name="Id" id="idcarga" value="<%=idmt %>" >
-<label>MATERIA</label><input class="controls" type="text" name="nombre" value="<%=Nmtr %>">
-<label>Apellido</label><input class="controls" type="text" name="apellido" value="<%=Ape %>">
+<label>NOMBRE</label><input class="controls" type="text" name="nombre" value="<%=Nmtr %>">
+<label>APELLIDO</label><input class="controls" type="text" name="apellido" value="<%=Ape %>">
 <br>
 <br>
 

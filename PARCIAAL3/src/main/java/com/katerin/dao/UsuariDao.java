@@ -20,7 +20,7 @@ public class UsuariDao {
 		
 		try {
 			em.getTransaction().begin();
-			Usuario = em.createQuery("from Usu as u where u.nombre='"+us.getNombre()+"'and u.contrasenia='"+us.getContrasenia()+"'").getResultList();
+			Usuario = em.createQuery("from usu as u where u.nombre='"+us.getNombre()+"'and u.contrasenia='"+us.getContrasenia()+"'").getResultList();
 		em.getTransaction().commit();
 		for(	Usu  datosid:Usuario) {
 			

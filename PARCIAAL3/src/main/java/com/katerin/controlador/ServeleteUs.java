@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-
 import com.katerin.dao.UsuariDao;
 import com.katerin.dao.consuldao;
 
 import com.katerin.model.Consulta;
-
 import com.katerin.model.Usu;
 
 /**
@@ -38,36 +36,7 @@ public class ServeleteUs extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		Consulta con = new Consulta();
-		Usu us = new Usu();
-		UsuariDao usudao = new UsuariDao();
-		String id= null;
-		String nombreus= null ;
-		String apellidous = null;
-
-        try {
-		id= request.getParameter("Id");
-		nombreus= request.getParameter("usuario");
-		apellidous= request.getParameter("contra");
-		
-		con.setIdconsulta(Integer.parseInt(id));
-		con.setNombre(nombreus);
-		con.setApellido(apellidous);
-		
-		int validar=usudao.ingresoUsuario(us).size();
-		if (validar==1) {
-			   response.sendRedirect("index.jsp");
-		   }else {
-			   System.out.println("ERROR1");
-		   }
-		}
-
-		
-        
-		catch(Exception e) {
-			
-		}
-		
+	
 		
 			
 	}
@@ -78,17 +47,53 @@ public class ServeleteUs extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		consuldao conn = new consuldao();
-		Gson json = new Gson();
+		String usu= request.getParameter("usuario");
+		String contra= request.getParameter("contra");
+String cerrarSec = request.getParameter("btncerrar");
 		
-		try {
-			//response.getWriter().append(json.toJson(conn.listaconsul()));
+		if(cerrarSec!=null) {
+			if(cerrarSec.equals("CERRAR")) {
+		    HttpSession cerrarS =(HttpSession)request.getSession();
+		    cerrarS.invalidate();
+		    
+		    response.sendRedirect("index.jsp");
 			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
+			}
+		
 		}
+		else	
+		{
+		
+		
+		Usu usuario = new Usu();
+		UsuariDao usudao = new UsuariDao();
+		
+		usuario.setNombre(usu);
+		usuario.setContrasenia(contra);
+		
+		
+		int validar = usudao.ingresoUsuario(usuario).size();
+	   if (validar==1) {
+		   Consulta consul = new Consulta();
+		   consuldao consuldao = new consuldao();
+		   
+		   
+		   consul.setIdconsulta(usuario.getIdusuario());
+		   consul.setNombre(usu);
+		   consuldao.agregarDatosConsulta(consul);
+		   
+		   
+		  HttpSession seccion = request.getSession(true);//para observar quien inicia secion
+		 seccion.setAttribute("usuario", usu);
+		   response.sendRedirect("carga.jsp");
+	   }else {
+		   System.out.println("ERROR1");
+	   }
 	}
 
+	}
 }
+
+
+
+

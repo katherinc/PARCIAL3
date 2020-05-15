@@ -10,7 +10,7 @@
 HttpSession seccion2 = (HttpSession)request.getSession();
 String usuariovariableseccion =(String)seccion2.getAttribute("usuario");//-aca se castea()
 if(usuariovariableseccion == null){
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("Usuario.jsp");
 	
 	
 }
@@ -20,7 +20,7 @@ if(usuariovariableseccion == null){
 <form action="ServeleteUs" method="post">
 <input type="submit"  value="CERRAR" name="btncerrar">
 </form>
-<a href="index.jsp"> VER HISTORIAL USUARIOS</a>
+<a href="consulta.jsp"> VER HISTORIAL USUARIOS</a>
 <h1>HOLA MUNDO desde principal</h1>
 </body>
 </html>

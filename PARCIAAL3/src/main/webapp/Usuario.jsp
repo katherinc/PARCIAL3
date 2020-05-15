@@ -10,7 +10,7 @@
 </head>
 <body>
 <section class="form-login">
-<form action="index.jsp" method="post">
+<form action="ServeleteUs" method="post">
 <h5>REGISTRO</h5>
 <input  class="controls" type="text" name="usuario" value="" placeholder="Usuario">
 <input class="controls" type="password" name="contra" value="" placeholder="contrasenia">
